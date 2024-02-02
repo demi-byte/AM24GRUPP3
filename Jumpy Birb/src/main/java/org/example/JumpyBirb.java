@@ -15,7 +15,7 @@ public class JumpyBirb implements ActionListener {
     public ArrayList<Rectangle> columns;
     public Rectangle bird;
     public int ticks, yMotion;
-    public final int frameHeight = 800, frameWidth = 800;
+    public final int frameHeight = 600, frameWidth = 1200;
 
     // konstruktorn
     public JumpyBirb() {
@@ -27,7 +27,7 @@ public class JumpyBirb implements ActionListener {
 
         jFrame.add(more);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(frameHeight, frameWidth);
+        jFrame.setSize(frameWidth, frameHeight);
         jFrame.setTitle("Jumpy Birb");
         jFrame.setResizable(false);
         jFrame.setVisible(true);
