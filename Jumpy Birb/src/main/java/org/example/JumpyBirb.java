@@ -18,7 +18,11 @@ public class JumpyBirb implements ActionListener {
     public final int frameHeight = 600, frameWidth = 1200;
 
     /**
-     * Constructor
+     * This constructor sets up a JPanel object (makeGraphics), a JFrame window and a timer
+     * to make the game run forwards.
+     * It also sets up the list consisting of the columns that are moving in the game,
+     * and the random variable that decides the y position of the columns. .
+     *
      */
     public JumpyBirb() {
         JFrame jFrame = new JFrame();
@@ -70,12 +74,17 @@ public class JumpyBirb implements ActionListener {
     /**
      * This method paints a column.
      * */
-
     public void paintColumn(Graphics g, Rectangle column) {
         g.setColor(Color.cyan.darker());
         g.fillRect(column.x, column.y, column.width, column.height);
     }
 
+    /**
+     * This method is called everytime the timer hits 20 ms as we set it up to.
+     * In the method the columns are moving to the left at a fixed rate.
+     * When the columns are out of the visible area (to the left) they are removed
+     * from the column list.
+     * */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -107,6 +116,11 @@ public class JumpyBirb implements ActionListener {
 
     }
 
+    /**
+     * This method is called at the end of the actionPerformed method.
+     * It repaints the objects after the positions are updated.
+     * The graphics are following the back end stuff.
+     * */
     public void repaint(Graphics g) {
 
         //sky
