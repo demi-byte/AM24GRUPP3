@@ -43,7 +43,6 @@ public class JumpyBirb implements ActionListener {
         addColumn(true);
         addColumn(true);
         addColumn(true);
-        addColumn(true);
 
         timer.start();
     }
@@ -91,29 +90,21 @@ public class JumpyBirb implements ActionListener {
         int speed = 6;
         ticks++;
 
-        for (int i = 0; i < columns.size(); i++) {
-            Rectangle column = columns.get(i);
+        for (Rectangle column : columns) {
             column.x -= speed;
         }
 
-        if (ticks % 2 == 0 && yMotion < 15 ) {
-            yMotion += 2;
-        }
 
         for (int i = 0; i < columns.size(); i++) {
             Rectangle column = columns.get(i);
 
             if(column.x + column.width < 0) {
                 columns.remove(column);
-
-                if(column.y == 0) {
-                    addColumn(false);
-                }
+                addColumn(false);
             }
         }
 
         makeGraphics.repaint();
-
     }
 
     /**
