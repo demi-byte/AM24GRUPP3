@@ -13,5 +13,16 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+    <build>
+    <plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.6.2</version>
+        <configuration>
+            <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+        </configuration>
+    </plugin>
+    </plugins>
+    </build>
 </project>

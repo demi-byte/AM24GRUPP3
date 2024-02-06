@@ -13,8 +13,7 @@ public class JumpyBirb implements ActionListener {
     public MakeGraphics makeGraphics;
     public Random random;
     public ArrayList<Rectangle> columns;
-    public Rectangle bird;
-    public int ticks, yMotion;
+    public int ticks;
     public final int frameHeight = 600, frameWidth = 1200;
 
     /**
