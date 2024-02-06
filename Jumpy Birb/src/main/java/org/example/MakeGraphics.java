@@ -3,7 +3,7 @@ package org.example;
 import javax.swing.*;
 import java.awt.*;
 
-public class More extends JPanel {
+public class MakeGraphics extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {

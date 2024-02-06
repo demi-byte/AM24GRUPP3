@@ -10,29 +10,30 @@ import java.util.Random;
 public class JumpyBirb implements ActionListener {
 
     public static JumpyBirb jumpyBirb;
-    public More more;
+    public MakeGraphics makeGraphics;
     public Random random;
     public ArrayList<Rectangle> columns;
     public Rectangle bird;
     public int ticks, yMotion;
     public final int frameHeight = 600, frameWidth = 1200;
 
-    // konstruktorn
+    /**
+     * Constructor
+     */
     public JumpyBirb() {
         JFrame jFrame = new JFrame();
         Timer timer = new Timer(20, this);
 
-        more = new More();
+        makeGraphics = new MakeGraphics();
         random = new Random();
 
-        jFrame.add(more);
+        jFrame.add(makeGraphics);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setSize(frameWidth, frameHeight);
         jFrame.setTitle("Jumpy Birb");
         jFrame.setResizable(false);
         jFrame.setVisible(true);
 
-        bird = new Rectangle(frameWidth / 2 - 10, frameHeight / 2 - 10, 20, 20);
         columns = new ArrayList<Rectangle>();
 
         addColumn(true);
@@ -44,6 +45,12 @@ public class JumpyBirb implements ActionListener {
     }
 
 
+    /**
+     * This method adds a column (obstruction)
+     * @param start - checks if it's the initial setup of columns or not. New columns
+     *              are added to a different location when the game movement is started.
+     *              The columns added are relative (in position) to the columns added before.
+     * */
     public void addColumn(boolean start) {
         int space = 300;
         int width = 100;
@@ -60,10 +67,13 @@ public class JumpyBirb implements ActionListener {
 
     }
 
+    /**
+     * This method paints a column.
+     * */
+
     public void paintColumn(Graphics g, Rectangle column) {
         g.setColor(Color.cyan.darker());
         g.fillRect(column.x, column.y, column.width, column.height);
-
     }
 
     @Override
@@ -93,7 +103,7 @@ public class JumpyBirb implements ActionListener {
             }
         }
 
-        more.repaint();
+        makeGraphics.repaint();
 
     }
 
