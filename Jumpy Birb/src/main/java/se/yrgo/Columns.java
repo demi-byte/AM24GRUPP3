@@ -16,7 +16,6 @@ public class Columns {
         random = new Random();
         columnSpace = 300;
         columnWidth = 100;
-        columnHeight = 50 + random.nextInt(300);
 
         for (int i = 0; i < 3; i++) {
             addColumn(true);
@@ -31,6 +30,7 @@ public class Columns {
      *              The columns added are relative (in position) to the columns added before.
      * */
     public void addColumn(boolean start) {
+        columnHeight = random.nextInt(250);
 
         if (start) {
             columnsList.add(new Rectangle(Window.frameWidth + columnWidth + columnsList.size() * 300, Window.frameHeight - columnHeight - 120, columnWidth, columnHeight));

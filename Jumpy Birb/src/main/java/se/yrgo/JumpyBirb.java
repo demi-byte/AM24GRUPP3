@@ -90,7 +90,6 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
         g.setColor(Color.pink);
         g.fillRect(0, 0, Window.frameWidth, Window.frameHeight);
 
-
         //grass
         g.setColor(Color.darkGray);
         g.fillRect(0, Window.frameHeight - 120, Window.frameWidth, 20);
