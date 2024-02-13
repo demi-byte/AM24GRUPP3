@@ -21,6 +21,9 @@ public class JumpyBirb implements ActionListener, MouseListener {
     public Rectangle birb;
     public final int frameHeight = 600, frameWidth = 1200;
 
+    private ImageIcon birbImage;
+    private ImageIcon jungleBackground;
+
     /**
      * This constructor sets up a JPanel object (makeGraphics), a JFrame window and a timer
      * to make the game run forwards.
@@ -32,7 +35,14 @@ public class JumpyBirb implements ActionListener, MouseListener {
         JFrame jFrame = new JFrame();
         Timer timer = new Timer(20, this);
 
+        birbImage = new ImageIcon("src/images/hampusSprite.gif");
+        jungleBackground = new ImageIcon("src/images/jungleBackground.gif");
+        JLabel birbLabel = new JLabel(birbImage);
+        JLabel jungleLabel = new JLabel(jungleBackground);
+        birbLabel.setBounds(100, 100, 101, 79);
+
         makeGraphics = new MakeGraphics();
+        makeGraphics.add(birbLabel);
         random = new Random();
 
         jFrame.add(makeGraphics);
