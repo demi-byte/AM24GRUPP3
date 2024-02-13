@@ -61,7 +61,7 @@ public class Columns {
 
     public void paintColumn(Graphics g) {
         for (Rectangle column: columnsList) {
-            g.setColor(Color.MAGENTA);
+            g.setColor(Color.cyan.darker());
             g.fillRect(column.x, column.y, column.width, column.height);
         }
     }
