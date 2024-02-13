@@ -1,4 +1,4 @@
-package org.example;
+package se.yrgo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,20 +9,13 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class JumpyBirb implements ActionListener, MouseListener {
+public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
 
-    public static JumpyBirb jumpyBirb;
-    public MakeGraphics makeGraphics;
     public Random random;
     public ArrayList<Rectangle> columns;
     public int ticks, yMovement, score;
-
     public boolean gameOver, started;
-    public Rectangle birb;
-    public final int frameHeight = 600, frameWidth = 1200;
 
-    private ImageIcon birbImage;
-    private ImageIcon jungleBackground;
 
     /**
      * This constructor sets up a JPanel object (makeGraphics), a JFrame window and a timer
@@ -32,29 +25,13 @@ public class JumpyBirb implements ActionListener, MouseListener {
      *
      */
     public JumpyBirb() {
-        JFrame jFrame = new JFrame();
         Timer timer = new Timer(20, this);
-
-        birbImage = new ImageIcon("src/images/hampusSprite.gif");
-        jungleBackground = new ImageIcon("src/images/jungleBackground.gif");
         JLabel birbLabel = new JLabel(birbImage);
-        JLabel jungleLabel = new JLabel(jungleBackground);
+
         birbLabel.setBounds(100, 100, 101, 79);
 
-        makeGraphics = new MakeGraphics();
-        makeGraphics.add(birbLabel);
         random = new Random();
 
-        jFrame.add(makeGraphics);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(frameWidth, frameHeight);
-        jFrame.addMouseListener(this);
-        jFrame.setTitle("Jumpy Birb");
-        jFrame.setResizable(false);
-        jFrame.setVisible(true);
-
-
-        birb = new Rectangle(frameWidth / 2 - 25, frameHeight / 2 - 25, 50,  50);
         columns = new ArrayList<Rectangle>();
 
         addColumn(true);
@@ -177,6 +154,13 @@ public class JumpyBirb implements ActionListener, MouseListener {
         makeGraphics.repaint();
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        repaint(g);
+    }
+
     /**
      * This method is called at the end of the actionPerformed method.
      * It repaints the objects after the positions are updated.
@@ -214,10 +198,6 @@ public class JumpyBirb implements ActionListener, MouseListener {
         if (gameOver) {
             g.drawString("Game Over, you suck!", 75, frameHeight / 2 -50);
         }
-    }
-
-    public static void main(String[] args) {
-        jumpyBirb = new JumpyBirb();
     }
 
     @Override
