@@ -58,4 +58,11 @@ public class Columns {
             }
         }
     }
+
+    public void paintColumn(Graphics g) {
+        for (Rectangle column: columnsList) {
+            g.setColor(Color.MAGENTA);
+            g.fillRect(column.x, column.y, column.width, column.height);
+        }
+    }
 }

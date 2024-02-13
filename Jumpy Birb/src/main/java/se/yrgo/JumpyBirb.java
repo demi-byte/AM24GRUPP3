@@ -90,17 +90,20 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
         g.setColor(Color.pink);
         g.fillRect(0, 0, Window.frameWidth, Window.frameHeight);
 
+        //ground
+        g.setColor(Color.gray);
+        g.fillRect(0, Window.frameHeight - 120, Window.frameWidth, 120);
+
         //grass
         g.setColor(Color.darkGray);
         g.fillRect(0, Window.frameHeight - 120, Window.frameWidth, 20);
 
         //birb
-        g.setColor(Color.red);
-        g.fillRect(birb.birbRect.x, birb.birbRect.y, birb.birbRect.width, birb.birbRect.height);
+        birb.paintBirb(g);
 
-        for (Rectangle column: columns.columnsList) {
-            paintColumn(g, column);
-        }
+        //columns
+        columns.paintColumn(g);
+
 
         g.setColor(Color.red);
         g.setFont(new Font("Helvetica", 1, 100));
@@ -114,13 +117,6 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
         }
     }
 
-    /**
-     * This method paints a column.
-     * */
-    public void paintColumn(Graphics g, Rectangle column) {
-        g.setColor(Color.cyan.darker());
-        g.fillRect(column.x, column.y, column.width, column.height);
-    }
 
     @Override
     public void mouseClicked(MouseEvent e) {

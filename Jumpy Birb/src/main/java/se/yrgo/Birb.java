@@ -34,4 +34,9 @@ public class Birb {
         birbRect.y += yMovement;
 
     }
+
+    public void paintBirb(Graphics g) {
+        g.setColor(Color.red);
+        g.fillRect(birbRect.x, birbRect.y, birbRect.width, birbRect.height);
+    }
 }
