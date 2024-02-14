@@ -35,7 +35,9 @@ public class Birb {
             yMovement *= -1;
         }
 
-        birbRect.y += yMovement;
+        birbRect.y += yMovement*10;
+
+        falling = true;
     }
 
     public void fall() {
