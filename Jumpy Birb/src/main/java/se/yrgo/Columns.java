@@ -11,7 +11,11 @@ public class Columns {
     public int columnWidth;
     public int columnHeight;
 
-    public Columns() {
+    private JumpyBirb jumpyBirb;
+
+    public Columns(JumpyBirb jumpyBirb) {
+        this.jumpyBirb = jumpyBirb;
+
         columnsList = new ArrayList<>();
         random = new Random();
         columnSpace = 300;

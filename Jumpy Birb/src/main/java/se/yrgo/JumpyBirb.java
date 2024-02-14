@@ -15,8 +15,9 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
 
     public static int gameSpeed, ticks;
 
-    private Birb birb;
-    private Columns columns;
+    public Birb birb;
+    public Columns columns;
+    private JumpyGraphics graphics;
 
 
     /**
@@ -28,13 +29,11 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
      */
     public JumpyBirb() {
         Timer timer = new Timer(20, this);
-        birb = new Birb();
-        columns = new Columns();
+        birb = new Birb(this);
+        columns = new Columns(this);
+        graphics = new JumpyGraphics(this);
         gameSpeed = 6;
         ticks = 0;
-
-
-        this.add(birb.birbLabel);
 
         timer.start();
         started = true;
@@ -76,7 +75,7 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        draw(g);
+        graphics.draw(g);
     }
 
     /**
@@ -84,38 +83,6 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
      * It repaints the objects after the positions are updated.
      * The graphics are following the back end stuff.
      * */
-    public void draw(Graphics g) {
-
-        //sky
-        g.setColor(Color.pink);
-        g.fillRect(0, 0, Window.frameWidth, Window.frameHeight);
-
-        //ground
-        g.setColor(Color.gray);
-        g.fillRect(0, Window.frameHeight - 120, Window.frameWidth, 120);
-
-        //grass
-        g.setColor(Color.darkGray);
-        g.fillRect(0, Window.frameHeight - 120, Window.frameWidth, 20);
-
-        //birb
-        birb.paintBirb(g);
-
-        //columns
-        columns.paintColumn(g);
-
-
-        g.setColor(Color.red);
-        g.setFont(new Font("Helvetica", 1, 100));
-
-        if (!started) {
-            g.drawString("Press space to start!", 75, Window.frameHeight / 2 -50);
-        }
-
-        if (gameOver) {
-            g.drawString("Game Over, you suck!", 75, Window.frameHeight / 2 -50);
-        }
-    }
 
 
     @Override
