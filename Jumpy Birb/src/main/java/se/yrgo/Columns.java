@@ -37,11 +37,11 @@ public class Columns {
         columnHeight = random.nextInt(250);
 
         if (start) {
-            columnsList.add(new Rectangle(Window.frameWidth + columnWidth + columnsList.size() * 300, Window.frameHeight - columnHeight - 120, columnWidth, columnHeight));
+            columnsList.add(new Rectangle(Window.frameWidth + columnWidth + columnsList.size() * 300, Window.frameHeight - columnHeight - JumpyBirb.groundHeight, columnWidth, columnHeight));
             columnsList.add(new Rectangle(Window.frameWidth + columnWidth + (columnsList.size() - 1) * 300, 0, columnWidth, Window.frameHeight - columnHeight - columnSpace));
         }
         else {
-            columnsList.add(new Rectangle(columnsList.get(columnsList.size() - 1).x + 600, Window.frameHeight - columnHeight - 120, columnWidth, columnHeight));
+            columnsList.add(new Rectangle(columnsList.get(columnsList.size() - 1).x + 600, Window.frameHeight - columnHeight - JumpyBirb.groundHeight, columnWidth, columnHeight));
             columnsList.add(new Rectangle(columnsList.get(columnsList.size() - 1).x, 0, columnWidth, Window.frameHeight - columnHeight - columnSpace));
         }
 
@@ -49,8 +49,16 @@ public class Columns {
 
     public void move() {
 
+        //collision handling
         for (Rectangle column : columnsList) {
-            column.x -= JumpyBirb.gameSpeed;
+            if (column.intersects(jumpyBirb.birb.birbRect)) {
+                jumpyBirb.gameOver = true;
+                jumpyBirb.birb.birbRect.x = column.x - jumpyBirb.birb.birbRect.width;
+            }
+        }
+
+        for (Rectangle column : columnsList) {
+            column.x -= jumpyBirb.gameSpeed;
         }
 
         for (int i = 0; i < columnsList.size(); i++) {

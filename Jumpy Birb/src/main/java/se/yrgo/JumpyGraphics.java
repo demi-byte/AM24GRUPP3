@@ -18,6 +18,11 @@ public class JumpyGraphics {
         backgroundLabel.setBounds(100, 100, 101, 79);
     }
 
+    /**
+     * This method is called at the end of the actionPerformed method.
+     * It repaints the objects after the positions are updated.
+     * The graphics are following the back end stuff.
+     * */
     public void draw(Graphics g) {
 
         //sky
@@ -36,11 +41,11 @@ public class JumpyGraphics {
 
         //ground
         g.setColor(Color.gray);
-        g.fillRect(0, Window.frameHeight - 120, Window.frameWidth, 120);
+        g.fillRect(0, Window.frameHeight - JumpyBirb.groundHeight, Window.frameWidth, JumpyBirb.groundHeight);
 
         //grass
         g.setColor(Color.darkGray);
-        g.fillRect(0, Window.frameHeight - 120, Window.frameWidth, 20);
+        g.fillRect(0, Window.frameHeight - JumpyBirb.groundHeight, Window.frameWidth, 20);
 
         //birb
         jumpyBirb.birb.paintBirb(g);
@@ -61,5 +66,6 @@ public class JumpyGraphics {
             g.drawString("Game Over, you suck!", 75, Window.frameHeight / 2 -50);
         }
     }
+
 
 }

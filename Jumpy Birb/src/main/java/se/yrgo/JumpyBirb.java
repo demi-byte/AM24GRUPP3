@@ -2,22 +2,21 @@ package se.yrgo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
+public class JumpyBirb extends JPanel implements ActionListener, MouseListener, KeyListener {
 
     public boolean gameOver, started;
 
-    public static int gameSpeed, ticks;
+    public static int groundHeight = 120;
 
-    public Birb birb;
-    public Columns columns;
-    private JumpyGraphics graphics;
+    public int gameSpeed, ticks;
+
+    public final Birb birb;
+    public final Columns columns;
+    private final JumpyGraphics graphics;
 
 
     /**
@@ -34,9 +33,11 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
         graphics = new JumpyGraphics(this);
         gameSpeed = 6;
         ticks = 0;
+        addMouseListener(this);
+        addKeyListener(this);
+        setFocusable(true);
 
         timer.start();
-        started = true;
     }
 
 
@@ -48,25 +49,10 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
      * */
     @Override
     public void actionPerformed(ActionEvent e) {
-        ticks++;
         if (started) {
+            ticks++;
             columns.move();
             birb.fall();
-
-            for (Rectangle column : columns.columnsList) {
-                if (column.intersects(birb.birbRect)) {
-                    gameOver = true;
-                    birb.birbRect.x = column.x - birb.birbRect.width;
-                }
-            }
-
-            if (birb.birbRect.y > Window.frameHeight - 120 || birb.birbRect.y < 0) {
-                gameOver = true;
-            }
-
-            if (birb.birbRect.y + birb.yMovement >= Window.frameHeight - 120) {
-                    birb.birbRect.y = Window.frameHeight - 120 - birb.birbRect.height;
-            }
         }
 
         this.repaint();
@@ -77,13 +63,6 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
         super.paintComponent(g);
         graphics.draw(g);
     }
-
-    /**
-     * This method is called at the end of the actionPerformed method.
-     * It repaints the objects after the positions are updated.
-     * The graphics are following the back end stuff.
-     * */
-
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -107,6 +86,24 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            started = true;
+            birb.jump();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 }

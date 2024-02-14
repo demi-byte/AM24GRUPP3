@@ -11,9 +11,13 @@ public class Birb {
     public int yMovement;
 
     private JumpyBirb jumpyBirb;
+    private Boolean falling;
 
     public Birb(JumpyBirb jumpyBirb) {
         this.jumpyBirb = jumpyBirb;
+
+        yMovement = 10;
+        falling = true;
 
         birbImage = new ImageIcon("src/images/hampusSprite.gif");
         birbRect = new Rectangle(Window.frameWidth / 2 - 25, Window.frameHeight / 2 - 25, 50,  50);
@@ -25,19 +29,33 @@ public class Birb {
 
     public void jump() {
 
+        falling = false;
 
+        if (yMovement > 0) {
+            yMovement *= -1;
+        }
 
+        birbRect.y += yMovement;
     }
 
     public void fall() {
 
-        if (yMovement > 0) {
-            yMovement = 0;
+        if (jumpyBirb.birb.birbRect.y > Window.frameHeight - JumpyBirb.groundHeight) {
+            jumpyBirb.gameOver = true;
         }
 
-        yMovement -= 10;
+        if (birbRect.y + yMovement >= Window.frameHeight - JumpyBirb.groundHeight) {
+            birbRect.y = Window.frameHeight - JumpyBirb.groundHeight - birbRect.height;
+        }
 
-        birbRect.y += yMovement;
+
+        if (falling) {
+            if (yMovement < 0) {
+                yMovement *= -1;
+            }
+
+            birbRect.y += yMovement;
+        }
 
     }
 
@@ -45,4 +63,5 @@ public class Birb {
         g.setColor(Color.red);
         g.fillRect(birbRect.x, birbRect.y, birbRect.width, birbRect.height);
     }
+
 }
