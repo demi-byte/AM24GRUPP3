@@ -1,5 +1,6 @@
 package se.yrgo;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,8 +14,17 @@ public class Columns {
 
     private JumpyBirb jumpyBirb;
 
+    private ImageIcon jungleSprite;
+    private ImageIcon underwaterSprite;
+    private ImageIcon desertSprite;
+
+
     public Columns(JumpyBirb jumpyBirb) {
         this.jumpyBirb = jumpyBirb;
+
+        jungleSprite = new ImageIcon("src/images/jungleSprite.png");
+        underwaterSprite = new ImageIcon("src/images/underwaterSprite.png");
+        desertSprite = new ImageIcon("src/images/desertSprite.png");
 
         columnsList = new ArrayList<>();
         random = new Random();
@@ -73,8 +83,23 @@ public class Columns {
 
     public void paintColumn(Graphics g) {
         for (Rectangle column: columnsList) {
-            g.setColor(Color.cyan.darker());
-            g.fillRect(column.x, column.y, column.width, column.height);
+            //g.setColor(Color.cyan.darker());
+            //g.fillRect(column.x, column.y, column.width, column.height);
+
+
+            if (jumpyBirb.ticks < 250) {
+                g.drawImage(jungleSprite.getImage(), column.x, column.y, column.width, column.height, jumpyBirb);
+            }
+
+            else if (jumpyBirb.ticks >= 250 && jumpyBirb.ticks < 500) {
+                g.drawImage(underwaterSprite.getImage(), column.x, column.y, column.width, column.height, jumpyBirb);
+            }
+
+            else if (jumpyBirb.ticks >= 500 && jumpyBirb.ticks < 750) {
+                g.drawImage(desertSprite.getImage(), column.x, column.y, column.width, column.height, jumpyBirb);
+            }
+
+
         }
     }
 }

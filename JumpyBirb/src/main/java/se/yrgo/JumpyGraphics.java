@@ -10,7 +10,6 @@ public class JumpyGraphics {
     public ImageIcon backgroundImage3;
     public ImageIcon backgroundImage4;
     public ImageIcon backgroundImage5;
-    public ImageIcon backgroundImage6;
     public JLabel backgroundLabel;
 
     private JumpyBirb jumpyBirb;
@@ -22,8 +21,7 @@ public class JumpyGraphics {
         backgroundImage2 = new ImageIcon("src/images/water.jpeg");
         backgroundImage3 = new ImageIcon("src/images/desert.jpeg");
         backgroundImage4 = new ImageIcon("src/images/snow.jpeg");
-        backgroundImage5 = new ImageIcon("src/images/disco.jpeg");
-        backgroundImage6 = new ImageIcon("src/images/space.jpeg");
+        backgroundImage5 = new ImageIcon("src/images/space.jpeg");
 
         //backgroundLabel = new JLabel(backgroundImage);
        // backgroundLabel.setBounds(100, 100, 101, 79);
@@ -78,13 +76,10 @@ public class JumpyGraphics {
             g.drawImage(backgroundImage4.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
         }
 
-        else if (jumpyBirb.ticks >= 1000 && jumpyBirb.ticks < 1250) {
+        else if (jumpyBirb.ticks >= 1000) {
             g.drawImage(backgroundImage5.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
         }
 
-        else if (jumpyBirb.ticks >= 1250) {
-            g.drawImage(backgroundImage6.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
-        }
 
         
         //birb
