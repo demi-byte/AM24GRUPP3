@@ -5,7 +5,12 @@ import java.awt.*;
 
 public class JumpyGraphics {
 
-    public ImageIcon backgroundImage;
+    public ImageIcon backgroundImage1;
+    public ImageIcon backgroundImage2;
+    public ImageIcon backgroundImage3;
+    public ImageIcon backgroundImage4;
+    public ImageIcon backgroundImage5;
+    public ImageIcon backgroundImage6;
     public JLabel backgroundLabel;
 
     private JumpyBirb jumpyBirb;
@@ -13,7 +18,12 @@ public class JumpyGraphics {
     public JumpyGraphics(JumpyBirb jumpyBirb) {
         this.jumpyBirb = jumpyBirb;
 
-        backgroundImage = new ImageIcon("src/images/jungleBackground.jpg");
+        backgroundImage1 = new ImageIcon("src/images/jungle.jpg");
+        backgroundImage2 = new ImageIcon("src/images/water.jpeg");
+        backgroundImage3 = new ImageIcon("src/images/desert.jpeg");
+        backgroundImage4 = new ImageIcon("src/images/snow.jpeg");
+        backgroundImage5 = new ImageIcon("src/images/disco.jpeg");
+        backgroundImage6 = new ImageIcon("src/images/space.jpeg");
 
         //backgroundLabel = new JLabel(backgroundImage);
        // backgroundLabel.setBounds(100, 100, 101, 79);
@@ -52,8 +62,31 @@ public class JumpyGraphics {
         g.fillRect(0, Window.frameHeight - JumpyBirb.groundHeight, Window.frameWidth, 20);
 
 
-        g.drawImage(backgroundImage.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
+        if (jumpyBirb.ticks < 250) {
+            g.drawImage(backgroundImage1.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
+        }
 
+        else if (jumpyBirb.ticks >= 250 && jumpyBirb.ticks < 500) {
+            g.drawImage(backgroundImage2.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
+        }
+
+        else if (jumpyBirb.ticks >= 500 && jumpyBirb.ticks < 750) {
+            g.drawImage(backgroundImage3.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
+        }
+
+        else if (jumpyBirb.ticks >= 750 && jumpyBirb.ticks < 1000) {
+            g.drawImage(backgroundImage4.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
+        }
+
+        else if (jumpyBirb.ticks >= 1000 && jumpyBirb.ticks < 1250) {
+            g.drawImage(backgroundImage5.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
+        }
+
+        else if (jumpyBirb.ticks >= 1250) {
+            g.drawImage(backgroundImage6.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
+        }
+
+        
         //birb
         jumpyBirb.birb.paintBirb(g);
 
