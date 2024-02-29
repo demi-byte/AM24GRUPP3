@@ -13,9 +13,11 @@ public class JumpyGraphics {
     public JumpyGraphics(JumpyBirb jumpyBirb) {
         this.jumpyBirb = jumpyBirb;
 
-        backgroundImage = new ImageIcon("");
-        backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setBounds(100, 100, 101, 79);
+        backgroundImage = new ImageIcon("src/images/jungleBackground.jpg");
+
+        //backgroundLabel = new JLabel(backgroundImage);
+       // backgroundLabel.setBounds(100, 100, 101, 79);
+
     }
 
     /**
@@ -24,6 +26,8 @@ public class JumpyGraphics {
      * The graphics are following the back end stuff.
      * */
     public void draw(Graphics g) {
+
+
 
         //sky
         if (jumpyBirb.ticks < 100)
@@ -46,6 +50,9 @@ public class JumpyGraphics {
         //grass
         g.setColor(Color.darkGray);
         g.fillRect(0, Window.frameHeight - JumpyBirb.groundHeight, Window.frameWidth, 20);
+
+
+        g.drawImage(backgroundImage.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
 
         //birb
         jumpyBirb.birb.paintBirb(g);

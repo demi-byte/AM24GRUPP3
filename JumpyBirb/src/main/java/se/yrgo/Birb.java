@@ -22,7 +22,7 @@ public class Birb {
         birbImage = new ImageIcon("src/images/hampusSprite.gif");
         birbRect = new Rectangle(Window.frameWidth / 2 - 25, Window.frameHeight / 2 - 25, 50,  50);
         birbLabel = new JLabel(birbImage);
-        birbLabel.setBounds(100, 100, 101, 79);
+        birbLabel.setBounds(birbRect.x, birbRect.y, 101, 79);
 
         jumpyBirb.add(birbLabel);
     }
@@ -36,6 +36,7 @@ public class Birb {
         }
 
         birbRect.y += yMovement*10;
+        birbLabel.setLocation(birbRect.getLocation());
 
         falling = true;
     }
@@ -57,13 +58,14 @@ public class Birb {
             }
 
             birbRect.y += yMovement;
+            birbLabel.setLocation(birbRect.getLocation());
         }
 
     }
 
     public void paintBirb(Graphics g) {
-        g.setColor(Color.red);
-        g.fillRect(birbRect.x, birbRect.y, birbRect.width, birbRect.height);
+        //g.setColor(Color.red);
+        //g.fillRect(birbRect.x, birbRect.y, birbRect.width, birbRect.height);
     }
 
 }
