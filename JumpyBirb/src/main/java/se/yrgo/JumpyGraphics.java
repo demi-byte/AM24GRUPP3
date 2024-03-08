@@ -60,23 +60,23 @@ public class JumpyGraphics {
         g.fillRect(0, Window.frameHeight - JumpyBirb.groundHeight, Window.frameWidth, 20);
 
 
-        if (jumpyBirb.ticks < 250) {
+        if (jumpyBirb.ticks < 500) {
             g.drawImage(backgroundImage1.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
         }
 
-        else if (jumpyBirb.ticks >= 250 && jumpyBirb.ticks < 500) {
+        else if (jumpyBirb.ticks >= 500 && jumpyBirb.ticks < 1000) {
             g.drawImage(backgroundImage2.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
         }
 
-        else if (jumpyBirb.ticks >= 500 && jumpyBirb.ticks < 750) {
+        else if (jumpyBirb.ticks >= 1000 && jumpyBirb.ticks < 1500) {
             g.drawImage(backgroundImage3.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
         }
 
-        else if (jumpyBirb.ticks >= 750 && jumpyBirb.ticks < 1000) {
+        else if (jumpyBirb.ticks >= 1500 && jumpyBirb.ticks < 2000) {
             g.drawImage(backgroundImage4.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
         }
 
-        else if (jumpyBirb.ticks >= 1000) {
+        else if (jumpyBirb.ticks >= 2000) {
             g.drawImage(backgroundImage5.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
         }
 

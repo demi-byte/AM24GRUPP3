@@ -17,7 +17,7 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
     public final Birb birb;
     public final Columns columns;
     private final JumpyGraphics graphics;
-
+    
 
     /**
      * This constructor sets up a JPanel object (makeGraphics), a JFrame window and a timer
@@ -55,6 +55,7 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
             columns.move();
             birb.fall();
         }
+
 
         this.repaint();
     }
