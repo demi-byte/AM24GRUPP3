@@ -57,7 +57,20 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
         }
 
 
+        if (gameOver) {
+            restart();
+        }
+
+
         this.repaint();
+    }
+
+    public void restart() {
+        gameOver = false;
+        started = false;
+        ticks = 0;
+        score = 0;
+        columns.getColumnsList().clear();
     }
 
     @Override
