@@ -54,11 +54,14 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
             ticks++;
             columns.move();
             birb.fall();
+
+
         }
 
 
         if (gameOver) {
             restart();
+            System.out.println("Your score:" + score);
         }
 
 
