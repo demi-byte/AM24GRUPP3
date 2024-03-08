@@ -155,8 +155,4 @@ public class Columns {
 
         }
     }
-
-    public ArrayList<Rectangle> getColumnsList() {
-        return columnsList;
-    }
 }

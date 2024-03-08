@@ -15,7 +15,7 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
     public int gameSpeed, ticks, score;
 
     public final Birb birb;
-    public final Columns columns;
+    public Columns columns;
     private final JumpyGraphics graphics;
     
 
@@ -70,7 +70,9 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
         started = false;
         ticks = 0;
         score = 0;
-        columns.getColumnsList().clear();
+        columns = new Columns(this);
+        birb.birbRect.x = Window.frameWidth / 2 - 25;
+        birb.birbRect.y = Window.frameHeight / 2 - 25;
     }
 
     @Override
