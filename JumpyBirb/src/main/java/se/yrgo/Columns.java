@@ -11,6 +11,7 @@ public class Columns {
     public int columnSpace;
     public int columnWidth;
     public int columnHeight;
+    public int scoreTick;
 
     private JumpyBirb jumpyBirb;
 
@@ -27,6 +28,7 @@ public class Columns {
 
     public Columns(JumpyBirb jumpyBirb) {
         this.jumpyBirb = jumpyBirb;
+        scoreTick = -10;
 
         jungleSprite = new ImageIcon("src/images/jungleSprite.png");
         jungleSprite2 = new ImageIcon("src/images/jungleSprite2.png");
@@ -98,6 +100,12 @@ public class Columns {
                 columnsList.remove(column);
                 addColumn(false);
             }
+        }
+
+        scoreTick++;
+        if (scoreTick > 100) {
+            scoreTick = 0;
+            jumpyBirb.score++;
         }
     }
 

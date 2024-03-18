@@ -36,30 +36,6 @@ public class JumpyGraphics {
     public void draw(Graphics g) {
 
 
-
-        //sky
-        if (jumpyBirb.ticks < 100)
-            g.setColor(Color.pink);
-        else if (jumpyBirb.ticks >= 100 && jumpyBirb.ticks < 200)
-            g.setColor(Color.blue);
-        else if (jumpyBirb.ticks >= 200 && jumpyBirb.ticks < 300)
-            g.setColor(Color.magenta);
-        else if (jumpyBirb.ticks >= 300 && jumpyBirb.ticks < 400)
-            g.setColor(Color.green);
-        else
-            g.setColor(Color.white);
-
-        g.fillRect(0, 0, Window.frameWidth, Window.frameHeight);
-
-        //ground
-        g.setColor(Color.gray);
-        g.fillRect(0, Window.frameHeight - JumpyBirb.groundHeight, Window.frameWidth, JumpyBirb.groundHeight);
-
-        //grass
-        g.setColor(Color.darkGray);
-        g.fillRect(0, Window.frameHeight - JumpyBirb.groundHeight, Window.frameWidth, 20);
-
-
         if (jumpyBirb.ticks < 500) {
             g.drawImage(backgroundImage1.getImage(), 0, 0, jumpyBirb.getWidth(), jumpyBirb.getHeight(), jumpyBirb);
         }
@@ -100,6 +76,8 @@ public class JumpyGraphics {
         if (jumpyBirb.gameOver) {
             g.drawString("Game Over, you suck!", 75, Window.frameHeight / 2 -50);
         }
+
+        g.drawString(Integer.toString(jumpyBirb.score), 20, 90);
     }
 
 

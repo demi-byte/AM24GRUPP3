@@ -13,53 +13,38 @@ public class Birb {
     private JumpyBirb jumpyBirb;
     private Boolean falling;
 
+    private final int gravity = 1;
+    private final int jumpStrength = -15;
+
     public Birb(JumpyBirb jumpyBirb) {
         this.jumpyBirb = jumpyBirb;
 
         yMovement = 10;
         falling = true;
 
-        birbImage = new ImageIcon("src/images/hampusSprite.gif");
-        birbRect = new Rectangle(Window.frameWidth / 2 - 25, Window.frameHeight / 2 - 25, 50,  50);
+
+
+        birbImage = new ImageIcon("src/images/nyhampusgif.gif");
+        birbRect = new Rectangle(Window.frameWidth / 2 - 25, Window.frameHeight / 2 - 25, 152,  119);
         birbLabel = new JLabel(birbImage);
-        birbLabel.setBounds(birbRect.x, birbRect.y, 101, 79);
+        birbLabel.setBounds(birbRect.x, birbRect.y, 152, 119);
 
         jumpyBirb.add(birbLabel);
     }
 
     public void jump() {
-
-        falling = false;
-
-        if (yMovement > 0) {
-            yMovement *= -1;
-        }
-
-        birbRect.y += yMovement*10;
-        birbLabel.setLocation(birbRect.getLocation());
-
-        falling = true;
+        yMovement = jumpStrength;
     }
 
-    public void fall() {
+    public void update() {
+       if (birbRect.y + yMovement >= Window.frameHeight) {
+            birbRect.y = Window.frameHeight - birbRect.height;
+       }
 
-        if (jumpyBirb.birb.birbRect.y > Window.frameHeight - JumpyBirb.groundHeight) {
-            jumpyBirb.gameOver = true;
-        }
+        yMovement += gravity;
+        birbRect.y += yMovement;
 
-        if (birbRect.y + yMovement >= Window.frameHeight - JumpyBirb.groundHeight) {
-            birbRect.y = Window.frameHeight - JumpyBirb.groundHeight - birbRect.height;
-        }
-
-
-        if (falling) {
-            if (yMovement < 0) {
-                yMovement *= -1;
-            }
-
-            birbRect.y += yMovement;
-            birbLabel.setLocation(birbRect.getLocation());
-        }
+        birbLabel.setLocation(birbRect.getLocation());
 
     }
 

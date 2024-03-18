@@ -10,7 +10,6 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
 
     public boolean gameOver, started;
 
-    public static int groundHeight = 120;
 
     public int gameSpeed, ticks, score;
 
@@ -41,7 +40,6 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
         timer.start();
     }
 
-
     /**
      * This method is called everytime the timer hits 20 ms as we set it up to.
      * In the method the columns are moving to the left at a fixed rate.
@@ -53,7 +51,7 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
         if (started) {
             ticks++;
             columns.move();
-            birb.fall();
+            birb.update();
         }
 
 
