@@ -11,7 +11,6 @@ public class Birb {
     public int yMovement;
 
     private JumpyBirb jumpyBirb;
-    private Boolean falling;
 
     private final int gravity = 1;
     private final int jumpStrength = -15;
@@ -20,7 +19,6 @@ public class Birb {
         this.jumpyBirb = jumpyBirb;
 
         yMovement = 10;
-        falling = true;
 
 
 
@@ -33,14 +31,17 @@ public class Birb {
     }
 
     public void jump() {
-        yMovement = jumpStrength;
+        if (birbRect.y > (jumpStrength*-1)) {
+            yMovement = jumpStrength;
+        }
     }
 
     public void update() {
        if (birbRect.y + yMovement >= Window.frameHeight) {
-            birbRect.y = Window.frameHeight - birbRect.height;
+            jumpyBirb.gameOver = true;
        }
 
+       
         yMovement += gravity;
         birbRect.y += yMovement;
 
