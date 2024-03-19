@@ -27,7 +27,7 @@ public class Birb {
         birbImage = new ImageIcon("src/images/nyhampusgif.gif");
         birbRect = new Rectangle(Window.frameWidth / 2 - 25, Window.frameHeight / 2 - 25, 152,  119);
         birbLabel = new JLabel(birbImage);
-        birbLabel.setBounds(birbRect.x, birbRect.y, 152, 119);
+        birbLabel.setBounds(birbRect.x, birbRect.y, 122, 95);
 
         jumpyBirb.add(birbLabel);
     }
