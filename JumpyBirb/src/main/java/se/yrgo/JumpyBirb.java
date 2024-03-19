@@ -30,7 +30,7 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
         birb = new Birb(this);
         columns = new Columns(this);
         graphics = new JumpyGraphics(this);
-        gameSpeed = 6;
+        gameSpeed = 10;
         ticks = 0;
         score = 0;
         addMouseListener(this);
