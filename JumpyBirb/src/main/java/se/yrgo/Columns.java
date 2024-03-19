@@ -94,11 +94,13 @@ public class Columns {
             column.x -= jumpyBirb.gameSpeed;
         }
 
-        for (int i = 0; i < columnsList.size(); i++) {
-            Rectangle column = columnsList.get(i);
+        for (int i = 0; i < columnsList.size(); i+=2) {
+            Rectangle column1 = columnsList.get(i);
+            Rectangle column2 = columnsList.get(i+1);
 
-            if (column.x + column.width < 0) {
-                columnsList.remove(column);
+            if (column1.x + column1.width < 0) {
+                columnsList.remove(column1);
+                columnsList.remove(column2);
                 addColumn(false);
             }
         }
@@ -112,19 +114,56 @@ public class Columns {
 
     public void paintColumn(Graphics g) {
         int even = 1;
-        for (Rectangle column : columnsList) {
 
+        for (Rectangle column : columnsList) {
+            // g.setColor(Color.cyan.darker());
+            // g.fillRect(column.x, column.y, column.width, column.height);
+
+            if (jumpyBirb.ticks < 500) {
                 if (even % 2 == 0) {
                     g.drawImage(jungleSprite2, column.x, column.y, column.width, column.height, jumpyBirb);
                 } else {
                     g.drawImage(jungleSprite, column.x, column.y, column.width, column.height, jumpyBirb);
                 }
+            }
+
+            else if (jumpyBirb.ticks >= 500 && jumpyBirb.ticks < 1000) {
+                if (even % 2 == 0) {
+                    g.drawImage(underwaterSprite2, column.x, column.y, column.width, column.height,
+                            jumpyBirb);
+                } else {
+                    g.drawImage(underwaterSprite, column.x, column.y, column.width, column.height,
+                            jumpyBirb);
+                }
+            }
+
+            else if (jumpyBirb.ticks >= 1000 && jumpyBirb.ticks < 1500) {
+                if (even % 2 == 0) {
+                    g.drawImage(desertSprite2, column.x, column.y, column.width, column.height, jumpyBirb);
+                }
+
+                else {
+                    g.drawImage(desertSprite, column.x, column.y, column.width, column.height, jumpyBirb);
+                }
+            }
+
+            else if (jumpyBirb.ticks >= 1500 && jumpyBirb.ticks < 2000) {
+                if (even % 2 == 0) {
+                    g.drawImage(snowSprite2, column.x, column.y, column.width, column.height, jumpyBirb);
+                } else {
+                    g.drawImage(snowSprite, column.x, column.y, column.width, column.height, jumpyBirb);
+                }
+            }
+
+            else if (jumpyBirb.ticks >= 2000) {
+                if (even % 2 == 0) {
+                    g.drawImage(spaceSprite2, column.x, column.y, column.width, column.height, jumpyBirb);
+                } else {
+                    g.drawImage(spaceSprite, column.x, column.y, column.width, column.height, jumpyBirb);
+                }
+            }
 
             even++;
-
-                if (even == 2) {
-                    even = 1;
-                }
         }
     }
 }
