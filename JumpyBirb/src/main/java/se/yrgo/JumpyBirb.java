@@ -88,7 +88,7 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
 
     private void saveScore() {
 
-        try (BufferedWriter w = new BufferedWriter(new FileWriter("score.txt", true))) {
+        try (BufferedWriter w = new BufferedWriter(new FileWriter("src/lib/score.txt", true))) {
             w.append("\n" + Integer.toString(score) + " " + name);
         }
 
