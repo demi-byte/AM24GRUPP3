@@ -77,9 +77,9 @@ public class JumpyGraphics {
             g.drawString("Game Over, you suck!", 75, Window.frameHeight / 2 -50);
         }
 
-        g.setFont(new Font("Helvetica", 1, 50));
-        g.drawString(Integer.toString(jumpyBirb.score), 50, 90);
-        g.drawString(jumpyBirb.getHighestScore(), Window.frameWidth-50, 90);
+        g.setFont(new Font("Helvetica", 1, 70));
+        g.drawString(Integer.toString(jumpyBirb.score), Window.frameWidth/2, 90);
+        // g.drawString(jumpyBirb.getHighestScore(), Window.frameWidth-150, 90);
     }
 
 
