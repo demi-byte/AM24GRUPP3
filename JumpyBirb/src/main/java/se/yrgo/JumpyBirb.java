@@ -69,6 +69,10 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
         }
 
         if (gameOver) {
+            if (birb.clipDeath != null) {
+                birb.clipDeath.setFramePosition(0);
+                birb.clipDeath.start();
+            }
             restart();
         }
 
@@ -120,13 +124,13 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
     public String getHighestScore() {
         TreeSet<Integer> scores = new TreeSet<>();
 
-        for (String s : readHighscore()) { 
+        for (String s : readHighscore()) {
             String splitter[] = s.split(" ");
             scores.add(Integer.parseInt(splitter[0]));
-        } 
+        }
 
         return Integer.toString(scores.last());
-        
+
     }
 
     @Override
