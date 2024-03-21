@@ -108,7 +108,7 @@ public class Columns {
         scoreTick++;
         if (scoreTick > 100) {
             scoreTick = 0;
-            jumpyBirb.score++;
+            jumpyBirb.score+=10;
         }
     }
 

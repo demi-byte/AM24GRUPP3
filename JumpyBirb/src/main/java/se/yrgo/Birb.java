@@ -55,8 +55,8 @@ public class Birb {
     }
 
     public void paintBirb(Graphics g) {
-        g.setColor(Color.red);
-        g.fillRect(collisionBoxHead.x, collisionBoxHead.y, collisionBoxHead.width, collisionBoxHead.height);
+        // g.setColor(Color.red);
+        // g.fillRect(collisionBoxHead.x, collisionBoxHead.y, collisionBoxHead.width, collisionBoxHead.height);
     }
 
 }
