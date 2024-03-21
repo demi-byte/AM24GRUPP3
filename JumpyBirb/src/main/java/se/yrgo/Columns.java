@@ -64,7 +64,7 @@ public class Columns {
      *              added before.
      */
     public void addColumn(boolean start) {
-        columnHeight = random.nextInt(250);
+        columnHeight = random.nextInt(50, 250);
 
         if (start) {
             columnsList.add(new Rectangle(Window.frameWidth + columnWidth + columnsList.size() * 300,

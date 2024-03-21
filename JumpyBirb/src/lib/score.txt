@@ -2,3 +2,5 @@
 10 Hampus
 20 Hampus
 30 Hampus
+350 Hampus
+0 Hampus
