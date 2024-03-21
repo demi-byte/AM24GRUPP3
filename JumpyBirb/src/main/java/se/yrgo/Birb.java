@@ -6,6 +6,9 @@ import java.awt.*;
 public class Birb {
 
     public Rectangle birbRect;
+    public Rectangle collisionBoxHead;
+    public Rectangle collisionBoxBody;
+
     public ImageIcon birbImage;
     public JLabel birbLabel;
     public int yMovement;
@@ -24,6 +27,8 @@ public class Birb {
 
         birbImage = new ImageIcon("src/images/nyhampusgif.gif");
         birbRect = new Rectangle(Window.frameWidth / 2 - 25, Window.frameHeight / 2 - 25, 152,  119);
+        collisionBoxHead = new Rectangle(birbRect.x, birbRect.y, 50,  50);
+        collisionBoxBody = new Rectangle(birbRect.x, birbRect.y, 100,  70);
         birbLabel = new JLabel(birbImage);
         birbLabel.setBounds(birbRect.x, birbRect.y, 122, 95);
 
@@ -50,8 +55,8 @@ public class Birb {
     }
 
     public void paintBirb(Graphics g) {
-        //g.setColor(Color.red);
-        //g.fillRect(birbRect.x, birbRect.y, birbRect.width, birbRect.height);
+        g.setColor(Color.red);
+        g.fillRect(collisionBoxHead.x, collisionBoxHead.y, collisionBoxHead.width, collisionBoxHead.height);
     }
 
 }
