@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 public class Highscore implements MouseListener {
 
     private JumpyBirb jumpyBirb;
-    private Rectangle backButton; 
+    private Button backButton;
 
     public Highscore(JumpyBirb jumpyBirb) {
         this.jumpyBirb = jumpyBirb;
@@ -19,6 +19,10 @@ public class Highscore implements MouseListener {
 
     public void paintHighscore(Graphics g, ImageIcon backgroundImage) {
         
+    }
+
+    public void navigate() {
+
     }
 
     @Override
