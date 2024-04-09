@@ -10,53 +10,20 @@ import java.awt.event.MouseListener;
 
 public class GameMenu implements MouseListener {
 
-    public class Button {
-        private Rectangle shapePosition;
-        private Color color;
-        private String buttonText;
-        private Boolean highlighted;
 
-        public Button(Rectangle shapePosition, Color color, String buttonText, Boolean highlighted) {
-            this.shapePosition = shapePosition;
-            this.color = color;
-            this.buttonText = buttonText;
-            this.highlighted = highlighted;
-
-        }
-
-        public void highlight(Boolean highlighted) {
-            this.highlighted = highlighted;
-        }
-
-        public Rectangle getShapePosition() {
-            return shapePosition;
-        }
-
-        public Color getColor() {
-            return color;
-        }
-
-        public String buttonText() {
-            return buttonText;
-        }
-
-        public Boolean isHighlighted() {
-            return highlighted;
-        }
-    }
-
-    private Rectangle playButton;
-    private Rectangle easyButton;
-    private Rectangle hardButton;
-    private Rectangle highscoresButton;
+    private Button playButton;
+    private Button easyButton;
+    private Button hardButton;
+    private Button highscoreButton;
     private JumpyBirb jumpyBirb;
 
-    public GameMenu(JumpyBirb jumpyBirb) {
+
+    public GameMenu(JumpyBirb jumpyBirb) { 
         this.jumpyBirb = jumpyBirb;
-        playButton = new Rectangle();
-        easyButton = new Rectangle();
-        hardButton = new Rectangle();
-        highscoresButton = new Rectangle();
+        playButton = new Button(new Rectangle(), Color.BLUE, "PLAY", false);
+        easyButton = new Button(new Rectangle(), Color.BLUE, "EASY", true);
+        hardButton = new Button(new Rectangle(), Color.BLUE, "HARD", false);
+        highscoreButton = new Button(new Rectangle(), Color.BLUE, "HIGHSCORE", false);
     }
 
     public void paintMenu(Graphics g, ImageIcon backgroundImage) {
