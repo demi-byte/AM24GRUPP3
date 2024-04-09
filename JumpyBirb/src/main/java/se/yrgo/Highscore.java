@@ -1,5 +1,6 @@
 package se.yrgo;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
@@ -12,9 +13,10 @@ public class Highscore implements MouseListener {
     private JumpyBirb jumpyBirb;
     private Button backButton;
 
+
     public Highscore(JumpyBirb jumpyBirb) {
         this.jumpyBirb = jumpyBirb;
-        backButton = new Rectangle(); 
+        backButton = new Button(new Rectangle(), Color.BLUE, "BACK", true);
     }
 
     public void paintHighscore(Graphics g, ImageIcon backgroundImage) {

@@ -21,11 +21,19 @@ public class Button {
         this.highlighted = highlighted;
     }
 
+
     public Rectangle getShapePosition() {
         return shapePosition;
     }
 
     public Color getColor() {
+        if (highlighted) {
+            color = Color.RED;
+        }
+        else {
+            color = Color.BLUE;
+        }
+        
         return color;
     }
 

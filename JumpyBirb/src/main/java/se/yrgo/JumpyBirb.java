@@ -21,6 +21,11 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
         HIGHSCORE;
     }
 
+    enum Difficulty {
+        EASY,
+        HARD
+    }
+
     public boolean gameOver, started;
 
     public int gameSpeed, ticks, score;
@@ -30,6 +35,7 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
     public GameState gameState;
     public GameMenu gameMenu; 
     public Highscore highscore; 
+    public Difficulty difficulty;
 
     public final Birb birb;
     public Columns columns;
@@ -60,6 +66,10 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
         setFocusable(true);
         timer.start();
         gameState = GameState.MENU;
+        difficulty = Difficulty.EASY;
+
+        this.addMouseListener(gameMenu);
+        this.addMouseMotionListener(gameMenu);
     }
 
     /**
@@ -73,33 +83,50 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
 
         if (gameState == GameState.GAME) {
 
-            if (started) {
-                ticks++;
-                columns.move();
-                birb.update();
-            }
-
-            if (gameOver) {
-                if (birb.clipDeath != null) {
-                    birb.clipDeath.setFramePosition(0);
-                    birb.clipDeath.start();
-                }
-
-                restart();
-            }
+            setDifficulty();
+            gameAction(e);
 
         }
 
         else if (gameState == GameState.MENU) {
 
+            gameMenu.navigate();
+
         }
 
         else if (gameState == GameState.HIGHSCORE){ 
-
+            highscore.navigate();
         }
 
 
         this.repaint();
+    }
+
+    private void setDifficulty() {
+        if (difficulty == Difficulty.EASY) {
+            // make game easy
+        }
+
+        else {
+            // make game hard 
+        }
+    }
+
+    private void gameAction(ActionEvent e) {
+        if (started) {
+            ticks++;
+            columns.move();
+            birb.update();
+        }
+
+        if (gameOver) {
+            if (birb.clipDeath != null) {
+                birb.clipDeath.setFramePosition(0);
+                birb.clipDeath.start();
+            }
+
+            restart();
+        }
     }
 
     private void restart() {
