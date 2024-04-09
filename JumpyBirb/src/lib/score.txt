@@ -105,3 +105,10 @@
 80 Hampus
 0 Hampus
 90 Hampus
+90 Hampus
+10 Hampus
+10 Hampus
+30 Hampus
+10 Hampus
+10 Hampus
+80 Hampus

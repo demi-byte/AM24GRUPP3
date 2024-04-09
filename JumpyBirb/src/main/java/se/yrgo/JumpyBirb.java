@@ -9,21 +9,27 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Map;
-import java.util.Random;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class JumpyBirb extends JPanel implements ActionListener, MouseListener, KeyListener {
+
+    enum GameState {
+        GAME,
+        MENU,
+        HIGHSCORE;
+    }
 
     public boolean gameOver, started;
 
     public int gameSpeed, ticks, score;
 
     public String name;
+
+    public GameState gameState;
+    public GameMenu gameMenu; 
+    public Highscore highscore; 
 
     public final Birb birb;
     public Columns columns;
@@ -43,6 +49,8 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
         birb = new Birb(this);
         columns = new Columns(this);
         graphics = new JumpyGraphics(this);
+        gameMenu = new GameMenu(this);
+        highscore = new Highscore(this);
         gameSpeed = 6;
         ticks = 0;
         score = 0;
@@ -50,8 +58,8 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
         addMouseListener(this);
         addKeyListener(this);
         setFocusable(true);
-
         timer.start();
+        gameState = GameState.MENU;
     }
 
     /**
@@ -62,19 +70,34 @@ public class JumpyBirb extends JPanel implements ActionListener, MouseListener, 
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (started) {
-            ticks++;
-            columns.move();
-            birb.update();
+
+        if (gameState == GameState.GAME) {
+
+            if (started) {
+                ticks++;
+                columns.move();
+                birb.update();
+            }
+
+            if (gameOver) {
+                if (birb.clipDeath != null) {
+                    birb.clipDeath.setFramePosition(0);
+                    birb.clipDeath.start();
+                }
+
+                restart();
+            }
+
         }
 
-        if (gameOver) {
-            if (birb.clipDeath != null) {
-                birb.clipDeath.setFramePosition(0);
-                birb.clipDeath.start();
-            }
-            restart();
+        else if (gameState == GameState.MENU) {
+
         }
+
+        else if (gameState == GameState.HIGHSCORE){ 
+
+        }
+
 
         this.repaint();
     }
