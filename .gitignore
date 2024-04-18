@@ -10,4 +10,4 @@ MANIFEST.MF
 *.iml
 *.jar
 bin
-*.txt
+JumpyBirb/src/lib/score.txt
