@@ -70,16 +70,16 @@ public class JumpyGraphics {
         g.setFont(new Font("Helvetica", 1, 100));
 
         if (!jumpyBirb.started) {
-            g.drawString("Press space to start!", 75, Window.frameHeight / 2 -50);
+            g.drawString("Press space to start!", 100, Window.frameHeight / 2 -20);
         }
 
         if (jumpyBirb.gameOver) {
-            g.drawString("Game Over, you suck!", 75, Window.frameHeight / 2 -50);
+            g.drawString("Game Over, you suck!", 100, Window.frameHeight / 2 -20);
         }
 
-        g.setFont(new Font("Helvetica", 1, 70));
-        g.drawString(Integer.toString(jumpyBirb.score), Window.frameWidth/2, 90);
-        // g.drawString(jumpyBirb.getHighestScore(), Window.frameWidth-150, 90);
+        g.setFont(new Font("Helvetica", 1, 40));
+        g.drawString(Integer.toString(jumpyBirb.score), 80, 90);
+        g.drawString(jumpyBirb.getHighestScore(), Window.frameWidth-100, 90);
     }
 
 
