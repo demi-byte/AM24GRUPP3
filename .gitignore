@@ -2,12 +2,13 @@
 .classpath
 *.class
 .project
-target
 .settings
 .DS_Store
 MANIFEST.MF
 .idea
 *.iml
-*.jar
 bin
 JumpyBirb/src/lib/score.txt
+sprintgranskning.txt
+sprintgranskning2.txt
+sprintgranskning3.txt
